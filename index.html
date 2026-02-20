@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>师嘉硕母亲 - 下载页面</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+        /* 页面整体布局 */
+        body {
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            transition: background-color 0.5s ease;
+        }
+        /* 核心容器样式 */
+        .download-card {
+            background-color: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        /* 标题样式 */
+        .card-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        /* 副标题样式 */
+        .card-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        /* 按钮通用样式 */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 8px;
+        }
+        /* 下载按钮样式 */
+        .download-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+        /* 查看原因按钮样式 */
+        .reason-btn {
+            background-color: #6c757d;
+            color: white;
+            display: none; /* 初始隐藏 */
+        }
+        .reason-btn:hover {
+            background-color: #545b62;
+        }
+        /* 失败提示样式 */
+        .fail-tip {
+            color: #dc3545;
+            font-size: 18px;
+            margin: 20px 0;
+            display: none; /* 初始隐藏 */
+        }
+        /* 最终原因文字样式 - 超大号单行大字 */
+        .final-reason {
+            font-size: 6vw; /* 视口宽度适配，电脑/手机都超大 */
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            width: 100%;
+            display: none; /* 初始隐藏 */
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 初始显示的卡片 -->
+        <div class="download-card">
+            <h2 class="card-title">师嘉硕母亲</h2>
+            <p class="card-subtitle">点击下方按钮下载相关内容</p >
+            <button class="btn download-btn">点击下载师嘉硕母亲</button>
+            <div class="fail-tip">❌ 下载失败！</div>
+            <button class="btn reason-btn">查看原因</button>
+        </div>
+        <!-- 最终显示的超大字 -->
+        <div class="final-reason">师嘉硕没有母亲</div>
+    </div>
+    <script>
+        // 获取页面元素
+        const downloadCard = document.querySelector('.download-card');
+        const downloadBtn = document.querySelector('.download-btn');
+        const failTip = document.querySelector('.fail-tip');
+        const reasonBtn = document.querySelector('.reason-btn');
+        const finalReason = document.querySelector('.final-reason');
+        const body = document.querySelector('body');
+        // 第一步：点击下载按钮 → 显示失败提示 + 显示查看原因按钮
+        downloadBtn.addEventListener('click', function() {
+            failTip.style.display = 'block';
+            reasonBtn.style.display = 'inline-block';
+            downloadBtn.disabled = true;
+            downloadBtn.style.backgroundColor = '#ccc';
+        });
+        // 第二步：点击查看原因按钮 → 隐藏所有元素，只显示超大号的原因文字
+        reasonBtn.addEventListener('click', function() {
+            // 隐藏初始卡片（包含所有按钮、提示）
+            downloadCard.style.display = 'none';
+            // 显示超大号原因文字
+            finalReason.style.display = 'block';
+            // 去掉页面背景色，让文字更突出
+            body.style.backgroundColor = 'white';
+        });
+    </script>
+</body>
+</html>
+
